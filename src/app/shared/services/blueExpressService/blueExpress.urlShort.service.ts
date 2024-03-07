@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
+import { environment } from '@env/environment';
 import axios, { AxiosRequestConfig } from 'axios';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlueExpress_Service {
-  constructor() {}
+  urlBaseMs = ""
+  constructor() {
+    this.urlBaseMs = environment.urlBaseMs;
+  }
   async deleteUrlShort(shortUrl: string): Promise<any> {
     try {
       console.info(`deleteUrlShort  longUrl`, shortUrl);
-      const url = 'http://localhost:3000/buex/'+shortUrl ;
+      const url = `${ this.urlBaseMs}/buex/`+shortUrl ;
       console.info(`deleteUrlShort  url`, url);
       const response = await axios.delete(url);
       console.info('deleteUrlShort-response', response);
@@ -23,7 +27,7 @@ export class BlueExpress_Service {
   async createUrlShort(longUrl: string): Promise<any> {
     try {
       console.info(`createUrlShort  longUrl`, longUrl);
-      const url = 'http://localhost:3000/buex/';
+      const url = `${ this.urlBaseMs}/buex/`;
       const config: AxiosRequestConfig = {
         data: {
           longUrl: longUrl,
@@ -42,7 +46,7 @@ export class BlueExpress_Service {
   async getList(limit: number, startKey: string): Promise<any> {
     try {
       console.info(`createUrlShort  listShorts limit`, limit, 'startKey:', startKey);
-      const url = `http://localhost:3000/buex/list/limit/${limit}/startKey/${startKey}`;
+      const url = `${ this.urlBaseMs}/buex/list/limit/${limit}/startKey/${startKey}`;
 
       console.info(`createUrlShort  url`, url);
       const response = await axios.get(url);
@@ -57,7 +61,7 @@ export class BlueExpress_Service {
   async getByUrlShort(shortUrl: string): Promise<any> {
     try {
       console.info('getByUrlShort  listShorts shortUrl:', shortUrl);
-      const url = `http://localhost:3000/buex/longUrl/${shortUrl}`;
+      const url = `${ this.urlBaseMs}/buex/longUrl/${shortUrl}`;
 
       console.info(`createUrlShort  url`, url);
       const response = await axios.get(url);

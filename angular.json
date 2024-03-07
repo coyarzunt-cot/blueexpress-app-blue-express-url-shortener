@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-local-matero3": {
+    "app-blue-express-url-shortener": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test-local-matero3",
+            "outputPath": "dist/app-blue-express-url-shortener",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -40,12 +40,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "3kb",
+                  "maximumError": "6kb"
                 }
               ],
               "outputHashing": "all"
@@ -62,22 +62,22 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test-local-matero3:build:production"
+              "buildTarget": "app-blue-express-url-shortener:build:production"
             },
             "development": {
-              "buildTarget": "test-local-matero3:build:development"
+              "buildTarget": "app-blue-express-url-shortener:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "buildTarget": "test-local-matero3:build",
+            "buildTarget": "app-blue-express-url-shortener:build",
             "proxyConfig": "proxy.config.js"
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test-local-matero3:build"
+            "buildTarget": "app-blue-express-url-shortener:build"
           }
         },
         "test": {
